@@ -7,7 +7,7 @@ public:
 	Ball(float xPosition, float yPosition);
 	~Ball();
 
-	void update(float deltaTime);
+	void update(float deltaTime, sf::FloatRect &playerBox);
 	
 	//getters
 	float getXPosition() { return m_shape.getPosition().x; }
@@ -21,5 +21,6 @@ private:
 	sf::Vector2f m_velocity{ -200.0f,-200.0f };
 	sf::CircleShape m_shape;
 	sf::Vector2f m_position;
+	sf::FloatRect m_boundingBox;
 };
 
