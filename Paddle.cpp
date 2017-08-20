@@ -15,3 +15,16 @@ Paddle::Paddle(float xPosition, float yPosition)
 Paddle::~Paddle()
 {
 }
+
+void Paddle::update(float deltaTime)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && getLeftPosition() > 0)
+	{
+		m_shape.move(-200.0f * deltaTime, 0.0f);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && getRightPosition() < 1105)
+	{
+		m_shape.move(200.0f * deltaTime, 0.0f);
+	}
+}

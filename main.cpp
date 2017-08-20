@@ -23,6 +23,7 @@ int main()
 				window.close();
 		}
 		deltaTime = gameClock.restart();
+		paddle.update(deltaTime.asSeconds());
 		ball.update(deltaTime.asSeconds());
 		window.clear();
 		window.draw(ball.getShape());

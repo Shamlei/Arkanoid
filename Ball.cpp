@@ -22,6 +22,6 @@ void Ball::update(float deltaTime)
 	if (getLeftPosition() <= -20 || getRightPosition() >= 1180)
 		m_velocity.x *= -1;
 	m_shape.move(m_velocity * deltaTime);
-	std::cout << m_position.y << std::endl;
+
 }
 
