@@ -1,5 +1,5 @@
 #include "Ball.h"
-#include "Paddle.h"
+
 
 
 
@@ -14,16 +14,25 @@ Ball::~Ball()
 {
 }
 
-void Ball::update(float deltaTime, sf::FloatRect &playerBox)
+void Ball::update(float deltaTime, Paddle &paddle)
 {
-	sf::FloatRect otherBox(playerBox);
+	sf::FloatRect playerBox(paddle.getBoundingBox());
 	m_boundingBox = m_shape.getGlobalBounds();
 	m_position = m_shape.getPosition();
 
 	// Collision check with paddle
-	if (m_boundingBox.intersects(otherBox))
+	if (m_boundingBox.intersects(playerBox))
 	{
-		std::cout << "COLLIDING" << std::endl;
+		if (getXPosition() < paddle.getMiddlePosition())
+		{
+			m_velocity.x = -200.0f;
+			m_velocity.y *= -1;
+		}
+		else
+		{
+			m_velocity.x = 200.0f;
+			m_velocity.y *= -1;
+		}
 	}
 
 	// Collision check with Y window

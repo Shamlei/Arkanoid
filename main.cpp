@@ -24,7 +24,7 @@ int main()
 		}
 		deltaTime = gameClock.restart();
 		paddle.update(deltaTime.asSeconds());
-		ball.update(deltaTime.asSeconds(),paddle.getBoundingBox());
+		ball.update(deltaTime.asSeconds(),paddle);
 		window.clear();
 		window.draw(ball.getShape());
 		window.draw(paddle.getShape());

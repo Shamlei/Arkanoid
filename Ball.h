@@ -1,13 +1,14 @@
 #pragma once
 #include "SFML\Graphics.hpp"
 #include <iostream>
+#include "Paddle.h"
 class Ball
 {
 public:
 	Ball(float xPosition, float yPosition);
 	~Ball();
 
-	void update(float deltaTime, sf::FloatRect &playerBox);
+	void update(float deltaTime,Paddle &paddle);
 	
 	//getters
 	float getXPosition() { return m_shape.getPosition().x; }
