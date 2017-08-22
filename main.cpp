@@ -3,24 +3,33 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "Brick.h"
-
-void instantiateBricks(std::vector<Brick> &bricks)
+#include <vector>
+ void instantiateBricks(std::vector<Brick> &brickVector)
 {
-	float xPos(5.0f);
+	
+	float xPos(25.0f);
 	float yPos(5.0f);
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 11; i++) // First row
 	{
-		bricks.push_back(Brick(xPos, yPos));
-
+		brickVector.push_back(Brick(xPos, yPos));
 		xPos += 105.0f;
 	}
-
+	xPos = 25.0f;
+	yPos = 50.0f;
+	
+	
+	for (int i = 0; i < 11; i++)
+	{
+		brickVector.push_back(Brick(xPos, yPos));
+		xPos += 105.0f;
+	}
+	
 
 }
-
+ 
 void drawBricks(sf::RenderWindow &window, std::vector<Brick> &bricks)
 {
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < 22; i++)
 	{
 		window.draw(bricks[i].getShape());
 	}
@@ -29,11 +38,13 @@ void drawBricks(sf::RenderWindow &window, std::vector<Brick> &bricks)
 
 int main()
 {
-	std::vector<Brick> brickVector;
+
 	// window
 	sf::RenderWindow window(sf::VideoMode(1200, 800), "Arkanoid");
 	
+	std::vector<Brick> brickVector;
 	instantiateBricks(brickVector);
+	
 
 	// gameClock for deltaTime
 	sf::Clock gameClock;
@@ -57,6 +68,7 @@ int main()
 		window.draw(ball.getShape());
 		window.draw(paddle.getShape());
 		window.display();
+
 	}
 
 	return 0;

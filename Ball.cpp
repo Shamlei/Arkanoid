@@ -14,7 +14,7 @@ Ball::~Ball()
 {
 }
 
-void Ball::update(float deltaTime, Paddle &paddle)
+void Ball::update(float deltaTime, Paddle &paddle, std::vector<Brick> &bricks)
 {
 	sf::FloatRect playerBox(paddle.getBoundingBox());
 	m_boundingBox = m_shape.getGlobalBounds();
@@ -34,7 +34,22 @@ void Ball::update(float deltaTime, Paddle &paddle)
 			m_velocity.y *= -1;
 		}
 	}
+	
+	
+/*
 
+// Collision check with bricks
+for (int i = 0; i < bricks.size(); i++)
+{
+if (m_boundingBox.intersects(bricks[i].getBoundingBox()))
+{
+bricks.erase(bricks.begin() + i);
+bricks[i].~Brick();
+}
+}
+
+
+*/
 	// Collision check with Y window
 	if (getTopPosition() <= -20 || getBottomPosition() >= 780)
 		m_velocity.y *= -1;

@@ -2,13 +2,15 @@
 #include "SFML\Graphics.hpp"
 #include <iostream>
 #include "Paddle.h"
+#include "Brick.h"
+
 class Ball
 {
 public:
 	Ball(float xPosition, float yPosition);
 	~Ball();
 
-	void update(float deltaTime,Paddle &paddle);
+	void update(float deltaTime,Paddle &paddle, std::vector<Brick> &bricks);
 	
 	//getters
 	float getXPosition() { return m_shape.getPosition().x; }
