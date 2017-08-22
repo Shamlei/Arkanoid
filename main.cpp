@@ -18,6 +18,7 @@
 	yPos = 50.0f;
 	
 	
+	
 	for (int i = 0; i < 11; i++)
 	{
 		brickVector.push_back(Brick(xPos, yPos));
@@ -29,7 +30,7 @@
  
 void drawBricks(sf::RenderWindow &window, std::vector<Brick> &bricks)
 {
-	for (int i = 0; i < 22; i++)
+	for (int i = 0; i < bricks.size(); i++)
 	{
 		window.draw(bricks[i].getShape());
 	}
@@ -42,18 +43,21 @@ int main()
 	// window
 	sf::RenderWindow window(sf::VideoMode(1200, 800), "Arkanoid");
 	
+
+
 	std::vector<Brick> brickVector;
 	instantiateBricks(brickVector);
 	
-
 	// gameClock for deltaTime
 	sf::Clock gameClock;
 	sf::Time deltaTime;
 
 	Ball ball(300, 300);
 	Paddle paddle(500, 700);
+	
 	while (window.isOpen())
 	{
+		
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -62,14 +66,15 @@ int main()
 		}
 		deltaTime = gameClock.restart();
 		paddle.update(deltaTime.asSeconds());
-		ball.update(deltaTime.asSeconds(),paddle);
+		ball.update(deltaTime.asSeconds(),paddle, brickVector);
 		window.clear();
 		drawBricks(window, brickVector);
 		window.draw(ball.getShape());
 		window.draw(paddle.getShape());
 		window.display();
-
+		
+		
 	}
-
+	
 	return 0;
 }

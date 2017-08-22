@@ -8,10 +8,12 @@ Ball::Ball(float xPosition, float yPosition)
 	m_shape.setRadius(20.0f);
 	m_shape.setPosition(xPosition, yPosition);
 	m_shape.setFillColor(sf::Color::Blue);
+
 }
 
 Ball::~Ball()
 {
+	std::cout << "DESTROY BALL" << std::endl;
 }
 
 void Ball::update(float deltaTime, Paddle &paddle, std::vector<Brick> &bricks)
@@ -25,31 +27,38 @@ void Ball::update(float deltaTime, Paddle &paddle, std::vector<Brick> &bricks)
 	{
 		if (getXPosition() < paddle.getMiddlePosition())
 		{
-			m_velocity.x = -200.0f;
+			m_velocity.x = -400.0f;
 			m_velocity.y *= -1;
 		}
 		else
 		{
-			m_velocity.x = 200.0f;
+			m_velocity.x = 400.0f;
 			m_velocity.y *= -1;
 		}
 	}
 	
 	
-/*
+
 
 // Collision check with bricks
 for (int i = 0; i < bricks.size(); i++)
 {
 if (m_boundingBox.intersects(bricks[i].getBoundingBox()))
 {
-bricks.erase(bricks.begin() + i);
-bricks[i].~Brick();
+	if(getXPosition() < bricks[i].getMiddleXPosition()) // If brick is hit on right
+		m_velocity.x = -400.0f;
+	else
+		m_velocity.x = 400.0f;
+
+	if (getYPosition() > bricks[i].getMiddleYPosition()) // If brick is hit down
+		m_velocity.y = -400.0f;
+	else
+		m_velocity.y = 400.0f;
+	bricks.erase(bricks.begin() + i);
 }
 }
 
 
-*/
 	// Collision check with Y window
 	if (getTopPosition() <= -20 || getBottomPosition() >= 780)
 		m_velocity.y *= -1;

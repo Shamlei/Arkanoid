@@ -1,5 +1,6 @@
-﻿  main.cpp
-  Brick.cpp
+﻿  Paddle.cpp
+  Ball.cpp
+c:\users\admin\documents\visual studio 2015\projects\arkanoid\arkanoid\ball.cpp(44): warning C4018: '<' : incompatibilité signed/unsigned
   Génération de code en cours...
   Arkanoid.vcxproj -> C:\Users\Admin\documents\visual studio 2015\Projects\Arkanoid\Debug\Arkanoid.exe
   Arkanoid.vcxproj -> C:\Users\Admin\documents\visual studio 2015\Projects\Arkanoid\Debug\Arkanoid.pdb (Partial PDB)

@@ -21,11 +21,11 @@ void Paddle::update(float deltaTime)
 	m_boundingBox = m_shape.getGlobalBounds();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && getLeftPosition() > 0)
 	{
-		m_shape.move(-200.0f * deltaTime, 0.0f);
+		m_shape.move(-400.0f * deltaTime, 0.0f);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && getRightPosition() < 1200)
 	{
-		m_shape.move(200.0f * deltaTime, 0.0f);
+		m_shape.move(400.0f * deltaTime, 0.0f);
 	}
 }
